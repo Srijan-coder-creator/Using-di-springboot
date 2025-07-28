@@ -1,0 +1,37 @@
+<!--Don't change the name of this file-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+          http://www.springframework.org/schema/beans
+          http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- Vaccines -->
+    <bean id="covidVaccine" class="com.example.Vaccination.Covid"/>
+    <bean id="polioVaccine" class="com.example.Vaccination.Polio"/>
+    <bean id="typhoidVaccine" class="com.example.Vaccination.Typhoid"/>
+
+    <!-- Time and Location -->
+    <bean id="timeAndLocation" class="com.example.Vaccination.TimeAndLocation"/>
+
+    <!-- Users -->
+    <bean id="self" class="com.example.Vaccination.Self">
+        <constructor-arg ref="timeAndLocation"/>
+        <constructor-arg ref="covidVaccine"/>
+    </bean>
+
+    <bean id="father" class="com.example.Vaccination.Father">
+        <constructor-arg ref="timeAndLocation"/>
+        <constructor-arg ref="polioVaccine"/>
+    </bean>
+
+    <bean id="mother" class="com.example.Vaccination.Mother">
+        <constructor-arg ref="timeAndLocation"/>
+        <constructor-arg ref="typhoidVaccine"/>
+    </bean>
+
+    <bean id="spouse" class="com.example.Vaccination.Spouse">
+        <constructor-arg ref="timeAndLocation"/>
+        <constructor-arg ref="covidVaccine"/>
+    </bean>
+
+</beans>
